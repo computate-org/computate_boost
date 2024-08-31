@@ -5,7 +5,7 @@ APP_DEPENDENCIES_REDHAT:
   - make
   - libicu-devel
   - boost-python3-devel
-  - python36-devel
+  - python3-devel
 APP_DEPENDENCIES: "{{ APP_DEPENDENCIES_REDHAT if ansible_distribution_file_variety == 'RedHat' else APP_DEPENDENCIES_REDHAT }}"
 APP_NAME: boost
 APP_USER: "{{ lookup('env', 'USER') }}"
@@ -16,4 +16,4 @@ APP_README: "{{ APP_SRC }}/README.md"
 APP_OPT: "{{ APP_PREFIX }}/opt"
 APP_REPO_SSH: git@github.com:boostorg/boost.git
 APP_REPO_HTTPS: "{{ APP_REPO_SSH | regex_replace('git@([^:]+):', 'https://\\1/') }}"
-APP_TAG: boost-1.70.0
+APP_TAG: boost-1.86.0
