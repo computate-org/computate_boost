@@ -45,12 +45,12 @@
     chdir: "{{ APP_SRC }}"
 - name: "Run env PKG_CONFIG_PATH={{ APP_PREFIX }}/lib64/pkgconfig:{{ APP_PREFIX }}/lib/pkgconfig CPLUS_INCLUDE_PATH=/usr/include/3.9 ./b2 --prefix={{ APP_PREFIX }}"
   shell: |
-    env PKG_CONFIG_PATH={{ APP_PREFIX }}/lib64/pkgconfig:{{ APP_PREFIX }}/lib/pkgconfig CPLUS_INCLUDE_PATH=/usr/include/$(python --version | perl -0777pe 's/^Python (\d+\.\d+)\.\d+/${1}/g') ./b2 --prefix={{ APP_PREFIX }}
+    env PKG_CONFIG_PATH={{ APP_PREFIX }}/lib64/pkgconfig:{{ APP_PREFIX }}/lib/pkgconfig CPLUS_INCLUDE_PATH=/usr/include/python$(python --version | perl -0777pe 's/^Python (\d+\.\d+)\.\d+/${1}/g') ./b2 --prefix={{ APP_PREFIX }}
   args:
     chdir: "{{ APP_SRC }}"
 - name: "Run env PKG_CONFIG_PATH={{ APP_PREFIX }}/lib64/pkgconfig:{{ APP_PREFIX }}/lib/pkgconfig CPLUS_INCLUDE_PATH=/usr/include/3.9 ./b2 install --prefix={{ APP_PREFIX }}"
   shell: |
-    env PKG_CONFIG_PATH={{ APP_PREFIX }}/lib64/pkgconfig:{{ APP_PREFIX }}/lib/pkgconfig CPLUS_INCLUDE_PATH=/usr/include/$(python --version | perl -0777pe 's/^Python (\d+\.\d+)\.\d+/${1}/g') ./b2 install --prefix={{ APP_PREFIX }}
+    env PKG_CONFIG_PATH={{ APP_PREFIX }}/lib64/pkgconfig:{{ APP_PREFIX }}/lib/pkgconfig CPLUS_INCLUDE_PATH=/usr/include/python$(python --version | perl -0777pe 's/^Python (\d+\.\d+)\.\d+/${1}/g') ./b2 install --prefix={{ APP_PREFIX }}
   args:
     chdir: "{{ APP_SRC }}"
   become: "{{ APP_ROOT }}"
